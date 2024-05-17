@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const { table } = require('table');
-const { createUpdateOptions, initialQuestion, departmentQuestions, roleQuestions, employeeQuestions } = require('./db/lib/questions');
+const { createUpdateOptions, initialQuestion, departmentQuestions, roleQuestions, employeeQuestions } = require('./lib/questions');
 const db = require('./config/connections');
 
 startApp();
@@ -294,34 +294,44 @@ function updateEmployeeManager(empId, currentTitle) {
 }
 
 function startApp() {
+    console.log('Starting application...'); // Log that the application is starting
     inquirer.prompt(initialQuestion).then(response => {
+        console.log('User action:', response.action); // Log the user's action
         switch (response.action) {
             case 'View all departments':
+                console.log('Viewing all departments...'); // Log that the user is viewing all departments
                 displayDepartments();
                 break;
             case 'View all roles':
+                console.log('Viewing all roles...'); // Log that the user is viewing all roles
                 displayRoles();
                 break;
             case 'View all employees':
+                console.log('Viewing all employees...'); // Log that the user is viewing all employees
                 displayEmployees();
                 break;
             case 'Add a department':
+                console.log('Adding a department...'); // Log that the user is adding a department
                 addNewDepartment();
                 break;
             case 'Add a role':
+                console.log('Adding a role...'); // Log that the user is adding a role
                 addRole();
                 break;
             case 'Add an employee':
+                console.log('Adding an employee...'); // Log that the user is adding an employee
                 addEmployee();
                 break;
             case 'Update an employee':
+                console.log('Updating an employee...'); // Log that the user is updating an employee
                 updateEmployee();
                 break;
             case 'Exit':
+                console.log('Exiting application...'); // Log that the user is exiting the application
                 db.end();
                 break;
             default:
-                console.log('Invalid choice, please try again.');
+                console.log('Invalid choice, please try again.'); // Log that the user made an invalid choice
                 startApp();
                 break;
         }
