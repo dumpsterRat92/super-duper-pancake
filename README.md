@@ -4,7 +4,7 @@ Employee Tracker is a Node.js application for managing departments, roles, and e
 
 ## Video Demo
 
-[Video Demo]([URL](https://drive.google.com/file/d/1lFxK9J6n8eSsAN0wATAA2DqJeJVUkLWZ/view))
+[Video](https://drive.google.com/file/d/1lFxK9J6n8eSsAN0wATAA2DqJeJVUkLWZ/view)
 
 ## Features
 
