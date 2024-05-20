@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
 const { table } = require('table');
-const { makeUpdate, question1, addDept, addRole: addRoleQuestions, addEmp } = require('./lib/questions');
+const { makeUpdate, question1, addDept, addRole, addEmp } = require('./lib/questions');
 const db = require('./config/connections');
+
 
 startApp();
 
@@ -56,7 +57,7 @@ async function displayRoles() {
     }
 }
 
-async function addRole() {
+async function addRolefunction() {
     try {
         const data = await inquirer.prompt(addRole);
         const departments = await queryDB('SELECT id, dptname FROM departments');
@@ -225,9 +226,13 @@ async function updateEmployeeManager(empId, currentTitle) {
 
 function startApp() {
     console.log('Starting application...');
+
     inquirer.prompt(question1).then(response => {
-        console.log('User action:', response.action);
+
+        console.log('User action:', response.choice);
+
         switch (response.choice) {
+
             case 'View all departments':
                 console.log('Viewing all departments...');
                 displayDepartments();
@@ -250,7 +255,7 @@ function startApp() {
 
             case 'Add a role':
                 console.log('Adding a role...');
-                addRole();
+                addRolefunction();
                 break;
 
             case 'Add an employee':
@@ -267,7 +272,7 @@ function startApp() {
                 console.log('Exiting application...');
                 db.end();
                 break;
-                
+
             default:
                 console.log('Invalid choice, please try again.');
                 startApp();
