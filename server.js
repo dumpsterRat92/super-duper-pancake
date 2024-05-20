@@ -226,31 +226,48 @@ async function updateEmployeeManager(empId, currentTitle) {
 function startApp() {
     console.log('Starting application...');
     inquirer.prompt(question1).then(response => {
+        console.log('User action:', response.action);
         switch (response.choice) {
             case 'View all departments':
+                console.log('Viewing all departments...');
                 displayDepartments();
                 break;
+
             case 'View all roles':
+                console.log('Viewing all roles...');
                 displayRoles();
                 break;
+
             case 'View all employees':
+                console.log('Viewing all employees...');
                 displayEmployees();
                 break;
+
             case 'Add a department':
+                console.log('Adding a department...');
                 addNewDepartment();
                 break;
+
             case 'Add a role':
+                console.log('Adding a role...');
                 addRole();
                 break;
+
             case 'Add an employee':
+                console.log('Adding an employee...');
                 addEmployee();
                 break;
+
             case 'Update an employee':
+                console.log('Updating an employee...');
                 updateEmployee();
                 break;
+
             case 'Quit':
+                console.log('Exiting application...');
                 db.end();
                 break;
+                
             default:
                 console.log('Invalid choice, please try again.');
                 startApp();
